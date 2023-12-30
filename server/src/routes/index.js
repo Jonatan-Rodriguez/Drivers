@@ -8,7 +8,7 @@ const router = Router();
 
 router.get('/drivers', getDriversAll);
 
-router.get('/driver/:id', getDriverById);
+router.get('/drivers/:id', getDriverById);
 
 router.post('/drivers', postDriver);
 

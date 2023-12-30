@@ -9,11 +9,11 @@ const {
 } = process.env;
 
 const DriverModel = require("./models/Driver");
-const TeamModel = require("./models/Team");
+const TeamModel = require("./models/Team.js");
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_BDD}`, {
-  logging: false, 
-  native: false, 
+  logging: false,
+  native: false,
 });
 const basename = path.basename(__filename);
 
@@ -33,12 +33,13 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 const { Driver, Team } = sequelize.models;
+
 DriverModel(sequelize);
 TeamModel(sequelize);
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-Driver.belongsToMany(Team, {through: "driver_team" });
-Team.belongsToMany(Driver, {through: "driver_team" });
+Driver.belongsToMany(Team, { through: "driver_team" });
+Team.belongsToMany(Driver, { through: "driver_team" });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
