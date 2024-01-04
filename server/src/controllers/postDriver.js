@@ -13,7 +13,6 @@ const postDriver = async (req, res) => {
         };
 
         await driverCreate.addTeam(foundTeam);
-        return res.status(200).json(foundTeam);
 
         return res.status(200).json(driverCreate);
 
