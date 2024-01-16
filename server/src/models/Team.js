@@ -36,9 +36,10 @@ module.exports = (sequelize) => {
           return equiposSeparados.indexOf(equipo) === index;
         }
       });
+      //ordeno alfabeticamente
+      equiposSinRepetir.sort((a, b) => a.localeCompare(b));
 
       //caragando la base de datos con los team de la api
-
       const equipos = equiposSinRepetir.map(nombreEquipo => ({ name: nombreEquipo }));
 
       await Team.bulkCreate(equipos);

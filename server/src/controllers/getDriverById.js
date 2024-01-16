@@ -19,7 +19,7 @@ const getDriverById = async (req, res) => {
 
         if (data) {
             if (!data.image.url) {
-                data.image.url = 'https://st3.depositphotos.com/36221892/37512/i/450/depositphotos_375127320-stock-photo-barcelona-spain-26th-february-2020.jpg';
+                data.image.url = 'https://img.freepik.com/fotos-premium/foto-corredor-masculino-portada-revista_808092-6526.jpg?size=626&ext=jpg&ga=GA1.1.2116175301.1701216000&semt=ais';
 
                 data.image.imageby = 'Imagen generica del corredor';
             }

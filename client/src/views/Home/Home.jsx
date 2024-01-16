@@ -1,18 +1,37 @@
+//styled
 import { ContainerHome } from "./home.styled";
-import { Link } from "react-router-dom";
+//components
+import Cards from "../../components/Cards/Cards";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import SelectBox from "../../components/SelectBox/SelectBox";
+//hook
+import { addDriver, addTeam } from '../../redux/action';
+import { connect } from 'react-redux';
+import { useEffect } from "react";
 
-const Home = () => {
+const Home = ({ addDriver, addTeam }) => {
+
+    useEffect(() => {
+        addDriver();
+        addTeam();
+    }, []);
+
     return (
         <ContainerHome>
-            <h1>Home</h1>
-            <Link to='/form'>
-                <button>Form</button>
-            </Link>
-            <Link to='/detail/1'>
-                <button>Detail</button>
-            </Link>
+            <div className="searchSelect">
+                <SearchBar />
+                <SelectBox />
+            </div>
+            <Cards />
         </ContainerHome>
     )
 }
 
-export default Home;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addDriver: () => dispatch(addDriver()),
+        addTeam: () => dispatch(addTeam()),
+    };
+};
+
+export default connect(null, mapDispatchToProps)(Home);

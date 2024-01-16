@@ -2,9 +2,9 @@ const { Driver, Team } = require('../db');
 
 const postDriver = async (req, res) => {
     try {
-        const { name, surname, description, image, nationality, birthdate, team } = req.body;
+        const { name, surname, description, image, nationality, dob, team } = req.body;
 
-        const driverCreate = await Driver.create({ name, surname, description, image, nationality, birthdate });
+        const driverCreate = await Driver.create({ name, surname, description, image, nationality, dob });
 
         const foundTeam = await Team.findOne({ where: { name: team } });
 
