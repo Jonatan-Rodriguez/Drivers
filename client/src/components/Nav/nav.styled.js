@@ -12,37 +12,31 @@ export const ContainerNav = styled.div`
     
 
     .navBtn{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-        border-radius: 30px;
-        background: rgb(141,255,198);
-        background: linear-gradient(90deg, rgba(141,255,198,1) 0%, rgba(40,166,236,1) 100%);
-        padding:5px 10px;
-
-        a:link, a:visited, a:active {
-            text-decoration:none;
-        }
-        
-        .navIco{
+        button {
+            padding: 1.3em 3em;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 500;
+            color: #000;
+            background-color: #fff;
+            border: none;
+            border-radius: 45px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease 0s;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: row;
+            outline: none;
+        }
 
-            .ico{
-                width: 40px;
-                height: 40px;
-                margin-right: 5px;
-            }
+        button:hover {
+            background-color: #d90429;
+            box-shadow: 0px 15px 20px #d9042950;
+            color: #fff;
+            transform: translateY(-7px);
+        }
 
-            p{
-                font-size: 2em;
-                color: white;
-                font-weight: bold;
-            }
+        button:active {
+            transform: translateY(-1px);
         }
     }
 `

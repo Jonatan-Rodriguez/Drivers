@@ -1,7 +1,6 @@
 import { ContainerNav } from "./nav.styled";
 import { Link } from "react-router-dom";
 import logo from '../../assets/img/logo.png';
-import newGame from '../../assets/img/charmander.png';
 import { connect } from 'react-redux';
 import { addDriver } from "../../redux/action";
 
@@ -15,10 +14,7 @@ const Nav = ({ addDriver }) => {
             </div>
             <div className="navBtn">
                 <Link to='/form'>
-                    <div className="navIco">
-                        <img className="ico" src={newGame} alt="new game" />
-                        <p>Crear Video Juego</p>
-                    </div>
+                    <button>Crear Corredor</button>
                 </Link>
             </div>
         </ContainerNav>

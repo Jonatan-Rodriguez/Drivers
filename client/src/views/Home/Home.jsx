@@ -1,9 +1,9 @@
 //styled
-import { ContainerHome } from "./home.styled";
+import { ContainerHome } from './home.styled';
 //components
-import Cards from "../../components/Cards/Cards";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import SelectBox from "../../components/SelectBox/SelectBox";
+import Cards from '../../components/Cards/Cards';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import SelectBox from '../../components/SelectBox/SelectBox';
 //hook
 import { addDriver, addTeam } from '../../redux/action';
 import { connect } from 'react-redux';
