@@ -7,11 +7,11 @@ export const ContainerLanding = styled.div`
     color: #333;
     overflow-x: hidden;
 
-    .header {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        color: #fff;
+    .background {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      color: #fff;
     }
   
   .content {
@@ -22,7 +22,7 @@ export const ContainerLanding = styled.div`
     text-align: center;
   }
   
-  .header-video {
+  .background-video {
     position: absolute;
     top: 0;
     left: 0;
@@ -31,12 +31,12 @@ export const ContainerLanding = styled.div`
     overflow: hidden;
   }
   
-  .header-video video {
+  .background-video video {
     min-width: 100%;
     min-height: 100%;
   }
   
-  .header-overlay {
+  .background-overlay {
     height: 100vh;
     width: 100vw;
     position: absolute;
@@ -47,7 +47,7 @@ export const ContainerLanding = styled.div`
     opacity: .70;
   }
   
-  .header-content {
+  .background-content {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -56,13 +56,12 @@ export const ContainerLanding = styled.div`
     z-index: 2;
   }
   
-  .header-content h1 {
+  .background-content h1 {
     font-size: 50px;
     margin-bottom: 0;
-    font-family: 'Lobster', cursive;
   }
   
-  .header-content p {
+  .background-content p {
     font-size: 1.5rem;
     display: block;
     padding-bottom: 2rem;

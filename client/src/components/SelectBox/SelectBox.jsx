@@ -25,7 +25,7 @@ const SelectBox = ({ filterCardsOrigin, filterTeam, orderCards, orderCardsDate, 
             <div className='selectContainer'>
                 <p>Filtro por equipo:</p>
                 <select className='selectBox' onChange={handleFilterTeam}>
-                    <option value="">-</option>
+                    <option>-Seleccione equipo-</option>
                     <option value="all">Todos</option>
                     {allTeams.map((team) => {
                         return <option key={team.id} value={team.name}>{team.name}</option>
@@ -38,7 +38,7 @@ const SelectBox = ({ filterCardsOrigin, filterTeam, orderCards, orderCardsDate, 
             <div className='selectContainer'>
                 <p>Filtro por origen:</p>
                 <select className='selectBox' onChange={handleFilterOrigin}>
-                    <option value="">-</option>
+                    <option>-Seleccione origen-</option>
                     <option value="all">Todos</option>
                     <option value="false">Api</option>
                     <option value="true">Base de datos</option>
@@ -50,7 +50,7 @@ const SelectBox = ({ filterCardsOrigin, filterTeam, orderCards, orderCardsDate, 
             <div className='selectContainer'>
                 <p>Orden por fecha:</p>
                 <select className='selectBox' onChange={handleOrderDate}>
-                    <option value="">-</option>
+                    <option>-Seleccione orden-</option>
                     <option value="a">Ascendente</option>
                     <option value="d">Descendente</option>
                 </select>
@@ -61,7 +61,7 @@ const SelectBox = ({ filterCardsOrigin, filterTeam, orderCards, orderCardsDate, 
             <div className='selectContainer'>
                 <p>Orden por nombre:</p>
                 <select className='selectBox' onChange={handleOrder}>
-                    <option value="">-</option>
+                    <option>-Seleccione orden-</option>
                     <option value="A">Ascendente</option>
                     <option value="D">Descendente</option>
                 </select>

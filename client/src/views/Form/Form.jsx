@@ -1,9 +1,12 @@
 import { ContainerForm } from "./form.styled";
 import axios from 'axios';
 import { useState } from "react";
+import { connect } from "react-redux";
 import validation from "./validation";
+import down from '../../assets/img/arrow.svg';
+import Swal from 'sweetalert2';
 
-const Form = () => {
+const Form = ({allTeams}) => {
 
     const [formData, setFormData] = useState({
         name: '',
@@ -22,11 +25,27 @@ const Form = () => {
 
         try {
             await axios.post('http://localhost:3001/drivers', formData);
-            console.log('Datos enviados correctamente');
+            Swal.fire({
+                title: "Corredor creado!",
+                text: "Su corredor se cargo con exito!",
+                icon: "success"
+            });
         } catch (error) {
-            alert('¡Hubo un error al enviar los datos!')
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Hubo un error al cargar el corredor!"
+              })
         }
     }
+
+    const handleTeamChange = (event) => {
+        const { value } = event.target;
+        setFormData({
+            ...formData,
+            team: value
+        });
+    };
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -65,7 +84,17 @@ const Form = () => {
                     <input required type="text" placeholder="Fecha de nacimiento*" name="dob" value={formData.dob} onChange={handleChange} />
                     {errors.dob && <div className="error"><p>{errors.dob}</p></div>}
 
-                    <input required type="text" placeholder="Equipo*" name="team" value={formData.team} onChange={handleChange} />
+                    <div className='selectContainer'>
+                        <select className='selectBox' onChange={handleTeamChange} value={formData.team}>
+                            <option value="">Seleccione un equipo*</option>
+                            {allTeams.map((team) => (
+                                <option key={team.id} value={team.name}>{team.name}</option>
+                            ))}
+                        </select>
+                        <div className='iconContainer'>
+                            <img src={down} alt="filtros" />
+                        </div>
+                    </div>
                     {errors.team && <div className="error"><p>{errors.team}</p></div>}
 
                     <input disabled={isSubmitDisabled} onClick={handleSubmit} className={isSubmitDisabled ? "btn-none" : "btn"} type="submit" value="Crear" />
@@ -76,4 +105,10 @@ const Form = () => {
     )
 }
 
-export default Form;
+const mapStateToProps = (state) => {
+    return {
+        allTeams: state.allTeams,
+    };
+}
+
+export default connect(mapStateToProps, null)(Form);

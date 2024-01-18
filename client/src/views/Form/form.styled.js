@@ -19,6 +19,51 @@ export const ContainerForm = styled.div`
         padding-left: 15px;
       }
     }
+    
+    .selectContainer{
+        display: flex;
+        justify-content: center;
+        position: relative;
+
+        .selectBox{
+            opacity: 1;
+            display: block;
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 13px 18px;
+            margin: 20px 0 0 0;
+            font-size: 0.8em;
+            border-radius: 100px;
+            background: #3c3c3c;
+            color: #fff;
+            animation: bounce 1s;
+            -webkit-appearance: none;
+            cursor: pointer;
+
+            option{
+                background: #3c3c3c;
+                color: #fff;
+            }
+        }
+        .iconContainer{
+            width: 30px;
+            height: 100%;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 20px;
+            rotate: 180deg;
+            animation: bounce2 1s;
+
+            img{
+                width: 10px;
+                height: 10px;
+            }
+        }
+    }
 
     .login {
         width: 70%;
