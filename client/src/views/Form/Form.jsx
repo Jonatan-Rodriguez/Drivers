@@ -5,8 +5,10 @@ import { connect } from "react-redux";
 import validation from "./validation";
 import down from '../../assets/img/arrow.svg';
 import Swal from 'sweetalert2';
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
 
-const Form = ({allTeams}) => {
+const Form = ({ allTeams }) => {
 
     const [formData, setFormData] = useState({
         name: '',
@@ -35,15 +37,15 @@ const Form = ({allTeams}) => {
                 icon: "error",
                 title: "Oops...",
                 text: "Hubo un error al cargar el corredor!"
-              })
+            })
         }
     }
 
-    const handleTeamChange = (event) => {
-        const { value } = event.target;
+    const handleTeamChange = (team) => {
+        /* const { value } = event.target; */
         setFormData({
             ...formData,
-            team: value
+            team: team
         });
     };
 
@@ -59,10 +61,16 @@ const Form = ({allTeams}) => {
         }))
     };
 
+    const options = allTeams?.map((team) => {
+        return { value: team?.name, label: team?.name }
+    });
+
+    const animatedComponents = makeAnimated();
+
     const isSubmitDisabled = Object.keys(errors).length > 0;
 
     return (
-        <ContainerForm>
+        < ContainerForm >
             <div className="login wrap">
                 <h1 className="h1">AGREGAR NUEVO CORREDOR</h1>
                 <form onSubmit={handleSubmit}>
@@ -84,8 +92,8 @@ const Form = ({allTeams}) => {
                     <input required type="text" placeholder="Fecha de nacimiento*" name="dob" value={formData.dob} onChange={handleChange} />
                     {errors.dob && <div className="error"><p>{errors.dob}</p></div>}
 
-                    <div className='selectContainer'>
-                        <select className='selectBox' onChange={handleTeamChange} value={formData.team}>
+                    {/* <div className='selectContainer'>
+                        <select className='selectBox' multiple onChange={handleTeamChange} value={formData.team}>
                             <option value="">Seleccione un equipo*</option>
                             {allTeams.map((team) => (
                                 <option key={team.id} value={team.name}>{team.name}</option>
@@ -94,14 +102,21 @@ const Form = ({allTeams}) => {
                         <div className='iconContainer'>
                             <img src={down} alt="filtros" />
                         </div>
-                    </div>
+                    </div> */}
+                    <Select
+                        options={options}
+                        isMulti
+                        classNamePrefix="Seleccione equipos"
+                        components={animatedComponents}
+                        onChange={handleTeamChange}
+                    />
                     {errors.team && <div className="error"><p>{errors.team}</p></div>}
 
                     <input disabled={isSubmitDisabled} onClick={handleSubmit} className={isSubmitDisabled ? "btn-none" : "btn"} type="submit" value="Crear" />
                     {isSubmitDisabled && <div className="error"><p>Llena los campos obligatorios (*)</p></div>}
                 </form>
             </div>
-        </ContainerForm>
+        </ContainerForm >
     )
 }
 

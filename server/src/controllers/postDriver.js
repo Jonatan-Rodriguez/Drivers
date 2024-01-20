@@ -6,13 +6,17 @@ const postDriver = async (req, res) => {
 
         const driverCreate = await Driver.create({ name, surname, description, image, nationality, dob });
 
-        const foundTeam = await Team.findOne({ where: { name: team } });
+        const foundTeam = await Promise.all(team.map(async (postTeam) => {
+            return await Team.findOne({ where: { name: postTeam.value } });
+        }))
 
         if (!foundTeam) {
             return res.status(404).json({ message: 'Equipo no encontrado' });
         };
 
-        await driverCreate.addTeam(foundTeam);
+        foundTeam.map(async (teamFound) => {
+            return await driverCreate.addTeam(teamFound);
+        })
 
         return res.status(200).json(driverCreate);
 

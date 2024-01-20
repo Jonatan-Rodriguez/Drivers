@@ -20,7 +20,7 @@ const getDriversAll = async (req, res) => {
             });
 
             if (driversByName[0]) {
-                driversByName.map((driBd) => {
+                driversByName.map(async (driBd) => {
                     // Convertir el objeto devuelto por Sequelize a un objeto plano
                     const driverPlain = driBd.get({ plain: true });
 
@@ -28,7 +28,11 @@ const getDriversAll = async (req, res) => {
 
                     driverPlain.name = { forename: driBd.name, surname: driBd.surname };
                     driverPlain.image = { url: driBd.image };
-                    driverPlain.teams = driverPlain.Teams[0].name;
+                    //Recoro el array de equipos y lo paso a string
+                    const nameTeamArr = await Promise.all(driverPlain.Teams.map((teamName) => {
+                        return teamName.name;
+                    }))
+                    driverPlain.teams = nameTeamArr.join(", ");
                     driverPlain.created = 'true';
 
                     driversFound.push(driverPlain);
@@ -80,7 +84,12 @@ const getDriversAll = async (req, res) => {
                 // Añado un atributo 'created' al objeto driverPlain para diferenciarlo y modifico atributos para asimilarlos
                 driverPlain.name = { forename: dbDriver.name, surname: dbDriver.surname };
                 driverPlain.image = { url: dbDriver.image };
-                driverPlain.teams = driverPlain.Teams[0].name;
+
+                //Recoro el array de equipos y lo paso a string
+                const nameTeamArr = await Promise.all(driverPlain.Teams.map((teamName) => {
+                    return teamName.name;
+                }))
+                driverPlain.teams = nameTeamArr.join(", ");
                 driverPlain.created = 'true';
 
                 allDrivers.push(driverPlain);

@@ -12,7 +12,22 @@ const getDriverById = async (req, res) => {
                 include: [{ model: Team, through: 'driver_team' }],
             });
 
-            if (driverWithTeams) return res.status(200).json(driverWithTeams);
+            if (driverWithTeams) {
+                // Convertir el objeto devuelto por Sequelize a un objeto plano
+                const driverPlain = driverWithTeams.get({ plain: true });
+
+                // Añado un atributo 'created' al objeto driverPlain para diferenciarlo y modifico atributos para asimilarlos
+                driverPlain.name = { forename: driverPlain.name, surname: driverPlain.surname };
+                driverPlain.image = { url: driverPlain.image };
+
+                //Recoro el array de equipos y lo paso a string
+                const nameTeamArr = await Promise.all(driverPlain.Teams.map((teamName) => {
+                    return teamName.name;
+                }))
+                driverPlain.teams = nameTeamArr.join(", ");
+
+                return res.status(200).json(driverPlain);
+            }
         }
 
         const { data } = await axios(`${URL}/${id}`);
