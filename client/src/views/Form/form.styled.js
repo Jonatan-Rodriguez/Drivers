@@ -22,21 +22,20 @@ export const ContainerForm = styled.div`
     
     .selectContainer{
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        position: relative;
+        align-items: center;
+        margin-top: 20px;
+        row-gap: 10px;
 
         .selectBox{
-            opacity: 1;
-            display: block;
             border: none;
             outline: none;
             width: 100%;
             padding: 13px 18px;
-            margin: 20px 0 0 0;
-            font-size: 0.8em;
-            border-radius: 100px;
+            font-size: 1em;
+            border-radius: 10px;
             background: #3c3c3c;
-            color: #fff;
             animation: bounce 1s;
             -webkit-appearance: none;
             cursor: pointer;
@@ -46,21 +45,23 @@ export const ContainerForm = styled.div`
                 color: #fff;
             }
         }
-        .iconContainer{
-            width: 30px;
-            height: 100%;
-            position: absolute;
-            right: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-bottom: 20px;
-            rotate: 180deg;
-            animation: bounce2 1s;
 
-            img{
-                width: 10px;
-                height: 10px;
+        .selectName{
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            border-radius: 5px;
+            
+            span{
+                padding: 3px 9px;
+                margin: 3px 5px;
+                color: #fff;
+                font-size: 1em;
+                background-color: #535EFC;
+                border-radius: 7px;
             }
         }
     }

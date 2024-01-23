@@ -6,6 +6,8 @@ const validation = (userData) => {
     } else {
         if (userData.name.length > 15) {
             errors.name = 'El nombre debe tener menos de 15 caracteres';
+        } else if (!/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/.test(userData.name)) {
+            errors.name = 'El nombre no debe contener números ni símbolos';
         }
     }
 
@@ -13,7 +15,9 @@ const validation = (userData) => {
         errors.surname = 'El apellido no puede estar vacio';
     } else {
         if (userData.surname.length > 15) {
-            errors.surname = 'El apellido debe tener menos de 15 caracteres';
+            errors.surname = 'El nombre debe tener menos de 15 caracteres';
+        } else if (!/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/.test(userData.surname)) {
+            errors.surname = 'El nombre no debe contener números ni símbolos';
         }
     }
 
@@ -47,8 +51,8 @@ const validation = (userData) => {
         }
     }
 
-    if (!userData.team) {
-        errors.team = 'El equipo no puede estar vacio';
+    if (!userData.team[0]) {
+        errors.team = 'Debe seleccionar al menos un equipo';
     }
 
     return errors;
