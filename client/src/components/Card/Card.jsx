@@ -14,9 +14,9 @@ const Card = ({ image, forename, surname, id, teams, date }) => {
                     </div>
                 </Link>
             </div>
-            <p><b>{date}</b></p>
             <p><b>{forename}</b></p>
             <p><b>{surname}</b></p>
+            <p><b>{date}</b></p>
             <p>Escuderias:</p>
             <p>{teams}</p>
         </ContainerCard>

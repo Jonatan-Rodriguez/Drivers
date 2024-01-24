@@ -5,9 +5,9 @@ export const ContainerCard = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 220px;
+    width: 250px;
     min-width: 200px;
-    height: 310px;
+    height: 350px;
     background-color: #242526;
     border-radius: 8px;
     padding: 13px;
@@ -16,6 +16,7 @@ export const ContainerCard = styled.div`
     p{
         color: white;
         font-size: 1.7em;
+        overflow: hidden;
     }
 
     .imgContainer{

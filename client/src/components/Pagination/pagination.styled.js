@@ -12,6 +12,7 @@ export const ContainerPagination = styled.div`
         justify-content: space-evenly;
         align-items: center;
         width: 80%;
+        min-width: 450px;
         max-width: 550px;
 
         .pagination-pag{
@@ -39,7 +40,7 @@ export const ContainerPagination = styled.div`
             }
         }
 
-        button {
+        .btn-nav {
             padding: 1em 1.5em;
             font-size: 12px;
             text-transform: uppercase;
@@ -55,15 +56,31 @@ export const ContainerPagination = styled.div`
             outline: none;
         }
     
-        button:hover {
+        .btn-nav:hover {
             background-color: #d90429;
             box-shadow: 0px 15px 20px #d9042950;
             color: #fff;
             transform: translateY(-7px);
         }
     
-        button:active {
+        .btn-nav:active {
             transform: translateY(-1px);
+        }
+
+        .btn-none{
+            padding: 1em 1.5em;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 500;
+            color: #000;
+            background-color: #ffffff40;
+            border: none;
+            border-radius: 45px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease 0s;
+            cursor: default;
+            outline: none;
         }
     }
 `

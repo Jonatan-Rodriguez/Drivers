@@ -15,9 +15,9 @@ const validation = (userData) => {
         errors.surname = 'El apellido no puede estar vacio';
     } else {
         if (userData.surname.length > 15) {
-            errors.surname = 'El nombre debe tener menos de 15 caracteres';
+            errors.surname = 'El apellido debe tener menos de 15 caracteres';
         } else if (!/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/.test(userData.surname)) {
-            errors.surname = 'El nombre no debe contener números ni símbolos';
+            errors.surname = 'El apellido no debe contener números ni símbolos';
         }
     }
 
@@ -40,6 +40,12 @@ const validation = (userData) => {
 
     if (!userData.nationality) {
         errors.nationality = 'La nacionalidad no puede estar vacia';
+    } else {
+        if (userData.nationality.length > 15) {
+            errors.nationality = 'La nacionalidad debe tener menos de 15 caracteres';
+        } else if (!/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/.test(userData.nationality)) {
+            errors.nationality = 'La nacionalidad no debe contener números ni símbolos';
+        }
     }
 
     if (!userData.dob) {
